@@ -1,0 +1,16 @@
+<div>
+  <h1>Hi {{firstName$ | async}}!</h1>
+  <p>You're now logged into the WiKi App</p>
+  <ul>
+    <li *ngFor="let page of (pages$ | async)">
+      <h4>
+        <a routerLink="/pages/{{page.shortRoute}}">{{page.title}}</a>
+      </h4>
+    </li>
+  </ul>
+  <p *ngIf="(loggedIn$ | async)">
+    <a [routerLink]="['/addarticle']">
+      <button>Add New Article</button>
+    </a>
+  </p>
+</div>

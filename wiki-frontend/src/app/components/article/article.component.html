@@ -1,0 +1,13 @@
+<h1>{{(page$ | async).title}}</h1>
+
+<p>
+  API Route: {{(page$ | async).route}}
+  <br />
+  Author ID: {{(page$ | async).author}}
+  <br />
+  Revision ID: {{(page$ | async).revision}}
+  <br />
+  Modified Date: {{(page$ | async).modified}}
+  <br />
+  Page Data: {{(page$ | async).pagedata}}
+</p>

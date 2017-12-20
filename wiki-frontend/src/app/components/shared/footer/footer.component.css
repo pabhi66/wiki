@@ -1,0 +1,6 @@
+.footer {
+  position: fixed;
+  bottom: 8px;
+  width: calc(100% - 16px);
+  left: 8px;
+}

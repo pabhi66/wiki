@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+  <span>Wiki</span>
+  <button mat-button routerLink="/" routerLinkActive="active">Home</button>
+  <button mat-button routerLink="/about" routerLinkActive="active">About</button>
+  <button mat-raised-button color="accent" *ngIf="(loggedIn$ | async)" routerLink="/logout" routerLinkActive="active">Logout</button>
+  <div *ngIf="!(loggedIn$ | async)">
+    <button mat-raised-button color="accent" routerLink="/login" routerLinkActive="active">Login</button>
+    &nbsp; &nbsp;
+    <button mat-raised-button color="warn" routerLink="/signup" routerLinkActive="active">Sign up</button>
+  </div>
+</mat-toolbar>

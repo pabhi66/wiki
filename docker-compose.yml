@@ -1,0 +1,32 @@
+version: '2'
+services:
+  wiki-pages-postput:
+    build: wiki-pages-postput
+    ports:
+      - "8181:8181"
+    depends_on:
+      - postgres
+  wiki-pages-get:
+    build: wiki-pages-get
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+  wiki-user:
+    build: wiki-user
+    ports:
+      - "4000:4000"
+    depends_on:
+      - postgres
+  wiki-api-gateway:
+    build: wiki-api-gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      - wiki-user
+      - wiki-pages-get
+      - wiki-pages-postput
+  postgres:
+    build: db
+    ports:
+      - "5432:5432"
