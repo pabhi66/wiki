@@ -14,6 +14,9 @@ const storeInitialState: IPageContent = {
   revisions: [],
   getPageContentInProgress: false,
   getPageContentFailed: false,
+  createPageFailed: false,
+  createPageInProgress: false,
+  newPageRoute: undefined,
 };
 
 
@@ -30,6 +33,7 @@ export function pageReducer(state: IPageContent = storeInitialState, action: Pay
     return Object.assign(
       {},
       state,
+      action.payload,
       {getPageContentInProgress: true}
     );
   }
@@ -48,6 +52,32 @@ export function pageReducer(state: IPageContent = storeInitialState, action: Pay
       {},
       state,
       {getPageContentInProgress: false, getPageContentFailed: true}
+    );
+  }
+
+  if (action.type === Page.NEW_PAGE) {
+    return Object.assign(
+      {},
+      state,
+      action.payload,
+      {createPageInProgress: true}
+    );
+  }
+
+  if (action.type === Page.NEW_PAGE_COMPLETED) {
+    return Object.assign(
+      {},
+      state,
+      action.payload,
+      {createPageInProgress: false, createPageFailed: false}
+    );
+  }
+
+  if (action.type === Page.NEW_PAGE_FAILED) {
+    return Object.assign(
+      {},
+      state,
+      {createPageInProgress: false, createPageFailed: true}
     );
   }
 

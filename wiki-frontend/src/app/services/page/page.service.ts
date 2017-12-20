@@ -16,22 +16,22 @@ export class PageService {
   constructor(private http: Http) {}
 
   getAll() {
-    return this.http.get(constants.BASEURL + '/pages').map((response: Response) => response.json());
+    return this.http.get(constants.PAGESURL).map((response: Response) => response.json());
   }
 
   getById(pageid: string) {
-    return this.http.get(constants.BASEURL + '/pages/' + pageid).map((response: Response) => response.json());
+    return this.http.get(constants.PAGESURL + '/' + pageid).map((response: Response) => response.json());
   }
 
   getCurrent(pageid: string) {
-    return this.http.get(constants.BASEURL + '/pages/' + pageid + '/current').map((response: Response) => response.json());
+    return this.http.get(constants.PAGESURL + '/' + pageid + '/current').map((response: Response) => response.json());
   }
 
   getRevision(pageid: string, revisionid: string) {
-    return this.http.get(constants.BASEURL + '/pages/' + pageid + '/revisions/' + revisionid).map((response: Response) => response.json());
+    return this.http.get(constants.PAGESURL + '/' + pageid + '/revisions/' + revisionid).map((response: Response) => response.json());
   }
 
   addArticle(title: string) {
-    return this.http.post(constants.BASEURL + '/pages', title, loginOptions);
+    return this.http.post(constants.PAGESURL, title, loginOptions).map((response: Response) => response.json());
   }
 }

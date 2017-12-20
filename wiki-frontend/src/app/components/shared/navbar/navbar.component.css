@@ -1,0 +1,31 @@
+#status-buttons{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+}
+#UserFace{
+    width: 32px;
+    height: 32px;
+    font-size: 32px
+}
+
+#loginFix{
+    display:flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+#UserMenu{
+    margin-left: -50px;
+}
+
+#drop-down{
+    justify-self: flex-start;
+    width: 75px;
+}
+
+#loggedIn{
+    margin-left: 8px;
+}

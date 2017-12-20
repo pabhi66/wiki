@@ -13,4 +13,7 @@ export interface IPageContent extends IPage {
   revisions: Revisions[];
   getPageContentInProgress: boolean;
   getPageContentFailed: boolean;
+  createPageInProgress: boolean;
+  createPageFailed: boolean;
+  newPageRoute: string;
 }

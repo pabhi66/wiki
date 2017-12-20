@@ -80,7 +80,7 @@ public class PostPutController {
 		insertQuery(s, title, result.getRight().getString("title"), uid);
 		// success, status of created along with the URl toward the newly created file is sent to the user
 		s.close();
-		return  new ResponseEntity<Object>("/api/v1/pages/" + title, HttpStatus.CREATED);
+		return  new ResponseEntity<Object>(new ApiError("201", "/api/v1/pages/" + title), HttpStatus.CREATED);
 		// JSON file was not in the right format
 	}
 	

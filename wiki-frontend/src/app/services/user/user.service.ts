@@ -18,7 +18,7 @@ export class UserService {
   constructor(private http: Http) {}
 
   getById(_id: string) {
-    const url = constants.BASEURL + '/users/' + _id;
+    const url = constants.USERSURL + '/' + _id;
     return this.http.get(url, loginOptions)
     .map(response => response.json());
   }
@@ -35,8 +35,7 @@ export class UserService {
   }
 
   logout() {
-    const url = constants.BASEURL + '/logout';
-    return this.http.put(url, {'some': 'crap'}, loginOptions)
+    return this.http.put(constants.LOGOUTURL, null, loginOptions)
     .map(response => response.json());
   }
 

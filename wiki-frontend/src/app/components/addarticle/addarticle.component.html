@@ -1,0 +1,16 @@
+<div>
+    <h3>Add New Article</h3>
+    <form name="form" (ngSubmit)="f.form.valid &&  add()" #f="ngForm" novalidate>
+      <div [ngClass]="{ 'has-error': f.submitted && !title.valid }">
+        <label for="uid">Article Title</label>
+        <input type="text" name="title" [(ngModel)]="model.title" #title="ngModel" required />
+        <div *ngIf="f.submitted && !title.valid">Article Title is required</div>
+      </div>
+    
+    <div>
+        <button >Create</button>
+        <a [routerLink]="['/']"><button>Cancel</button> </a>
+    </div>
+  </form>
+</div>
+  

@@ -14,8 +14,9 @@ module.exports = router
 
 router.put("/", async(req, res)=>{
     user = req.headers['uid'];
-    console.log(user);
-    await db.query('UPDATE users set last_logout = $1 WHERE userid = $2', [moment().utc(), user]);
-    res.cookie('auth-token', false); 
+    if(user != "null"){
+        await db.query('UPDATE users set last_logout = $1 WHERE userid = $2', [moment().utc(), user]);
+    }
+    res.clearCookie('auth-token'); 
     res.status(200).send({message: "Logged Out"});
 });

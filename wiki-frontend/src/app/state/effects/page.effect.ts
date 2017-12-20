@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Store, Action } from '@ngrx/store';
 import { Effect, Actions } from '@ngrx/effects';
@@ -22,6 +23,7 @@ export class PageEffects {
 constructor(
     private actions$: Actions,
     private _pageService: PageService,
+    private router: Router
 ) {}
 
 @Effect() reqPage$: Observable<Action> = this.actions$.ofType(Page.REQ_PAGE)
@@ -31,7 +33,7 @@ constructor(
             return Observable.from([
                 Page.updatePageDetails(
                     pageData[0].title,
-                    constants.BASEURL + '/' + action.payload.shortRoute,
+                    constants.PAGESURL + '/' + action.payload.shortRoute,
                     action.payload.shortRoute,
                     pageData[0].revisionid,
                     pageData[0].modified,
@@ -46,5 +48,23 @@ constructor(
             return of(Page.pageFailed());
         });
     });
+
+@Effect() newPage$: Observable<Action> = this.actions$.ofType(Page.NEW_PAGE)
+    .switchMap( (action: PayloadAction): ObservableInput<Action> => {
+        return this._pageService.addArticle(action.payload.title)
+        .mergeMap( (newPageData) => {
+            return of(Page.newPageCompleted(newPageData.msg));
+        })
+        .catch((err) => {
+            return of(Page.newPageFailed());
+        });
+    });
+
+@Effect({dispatch: false})
+newPageComplete$: Observable<Action>= this.actions$.ofType(Page.NEW_PAGE_COMPLETED)
+    .do( (action: PayloadAction) => this.router.navigate([
+        'pages',
+        action.payload.newPageRoute.split('/').reverse()[0]
+    ]));
 
 }

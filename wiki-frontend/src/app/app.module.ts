@@ -29,6 +29,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { ArticleComponent } from './components/article/article.component';
 import { PageEffects } from './state/effects/page.effect';
+import { AddArticleComponent } from './components/addarticle/addarticle.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { PageEffects } from './state/effects/page.effect';
     SignupComponent,
     LogoutComponent,
     ArticleComponent,
+    AddArticleComponent,
   ],
   imports: [
     BrowserModule,

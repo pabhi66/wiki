@@ -58,16 +58,19 @@ export const pageFailed = (): Action => {
 
 export const newPage = ( title: string ): PayloadAction => {
   return {
-    type: REQ_PAGE,
+    type: NEW_PAGE,
     payload: {
-      title: title,
+      title,
     },
   };
 };
 
-export const newPageCompleted = (): Action => {
+export const newPageCompleted = ( newPageRoute: string ): PayloadAction => {
   return {
     type: NEW_PAGE_COMPLETED,
+    payload: {
+      newPageRoute,
+    }
   };
 };
 

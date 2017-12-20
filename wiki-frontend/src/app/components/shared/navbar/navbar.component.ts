@@ -10,10 +10,13 @@ import { Observable } from 'rxjs/Observable';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavbarComponent implements OnInit {
+
+  firstName$: Observable<string>;
   loggedIn$: Observable<boolean>;
 
   constructor(private store: Store<IStore>) {
     this.loggedIn$ = this.store.select(s => s.userReducer.loggedIn);
+    this.firstName$ = this.store.select(s => s.userReducer.first_name);
   }
   ngOnInit() {}
 }

@@ -22,7 +22,14 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Methods", "OPTIONS, GET, PUT, POST, DELETE, HEAD");
   res.header("Access-Control-Allow-Credentials", "true");
-  next();
+
+  if ('OPTIONS' === req.method) {
+    res.send(200);
+  }
+  else {
+      next();
+  }
+
 });
 
 app.use(cookieParser());

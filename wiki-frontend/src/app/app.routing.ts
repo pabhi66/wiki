@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { ArticleComponent } from './components/article/article.component';
+import { AddArticleComponent } from './components/addarticle/addarticle.component';
 
 // set routes
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
     {path: 'logout', component: LogoutComponent},
     {path: 'signup', component: SignupComponent},
     {path: 'pages/:link', component: ArticleComponent},
+    {path: 'addarticle', component: AddArticleComponent},
     // otherwise redirect to home
     { path: '**', component: PageNotFoundComponent }
 ];

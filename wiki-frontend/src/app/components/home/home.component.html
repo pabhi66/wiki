@@ -1,6 +1,9 @@
 <div>
-  <h1>Hi {{firstName$ | async}}!</h1>
-  <p>You're now logged into the WiKi App</p>
+  <h1>Welcome to the WiKi App</h1>
+  <h2 *ngIf="(loggedIn$ | async)">
+    <h3>Hi {{firstName$ | async}}! You're now logged in</h3>
+  </h2>
+  
   <ul>
     <li *ngFor="let page of (pages$ | async)">
       <h4>

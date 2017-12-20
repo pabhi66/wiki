@@ -1,11 +1,31 @@
-<mat-toolbar color="primary">
-  <span>Wiki</span>
-  <button mat-button routerLink="/" routerLinkActive="active">Home</button>
-  <button mat-button routerLink="/about" routerLinkActive="active">About</button>
-  <button mat-raised-button color="accent" *ngIf="(loggedIn$ | async)" routerLink="/logout" routerLinkActive="active">Logout</button>
-  <div *ngIf="!(loggedIn$ | async)">
-    <button mat-raised-button color="accent" routerLink="/login" routerLinkActive="active">Login</button>
-    &nbsp; &nbsp;
-    <button mat-raised-button color="warn" routerLink="/signup" routerLinkActive="active">Sign up</button>
-  </div>
+<mat-toolbar color="primary" class="header">
+      <span>Wiki</span>
+      &nbsp;  &nbsp;
+      <button mat-button routerLink="/" routerLinkActive="active">Home</button>
+      &nbsp;
+      <button mat-button routerLink="/about" routerLinkActive="active">About</button>
+      <div id="status-buttons">
+            <div *ngIf="(loggedIn$ | async)" id="loginFix">
+                  <div id="drop-down">
+                        <mat-menu #menu="matMenu"  xPosition="before" id="UserMenu" overlapTrigger="false">
+                              <button mat-menu-item>{{firstName$ | async}}</button>
+                              <hr matLine>
+                              <button mat-menu-item>Item 1</button>
+                              <button mat-menu-item>Item 2</button>
+                              <hr matLine>
+                              <button mat-menu-item routerLink="/logout" routerLinkActive="active">Logout</button>
+                        </mat-menu>
+                  </div>
+                  <mat-icon id="UserFace" [matMenuTriggerFor]="menu">face
+                  </mat-icon>
+                  &nbsp;
+                  <div>
+                        
+                  </div>
+            </div>
+            <div *ngIf="!(loggedIn$ | async)">
+                 <button mat-raised-button color="accent"  routerLink="/login" routerLinkActive="active">Login</button>
+                  &nbsp;  &nbsp;
+                  <button mat-raised-button color="warn" routerLink="/signup" routerLinkActive="active">Sign up</button>
+      </div></div>
 </mat-toolbar>
